@@ -1,0 +1,34 @@
+Group
+---------
+Joey Lemon
+Dustin Craig
+Kishan Patel
+
+Exploit #1
+----------
+99	strcpy(log, REPOSITORY);
+100	strcat(log, "/");
+101	strcat(log, argv[2]);
+102	strcat(log, LOGEXT);
+
+The above code (lines 99-102) from bcvs.c copies user input from argv[2] into the "log" buffer. 
+This can be exploited to overflow the buffer and hijack the control flow of the program by overwriting a return address.
+
+
+Exploit #2
+----------
+189	strcat(user, getenv("USER"));
+190	if (user != 0) execlp("chown", "chown", user, dst, (char *)0);
+
+The above code (lines 189-190) executes the chown command, passing in the environment variable "USER" to the execlp() function.
+We can insert any type of command line code into this variable, making the program execute any arbitrary command we desire.
+For example, we can set USER=";/bin/sh#" to spawn a shell with root access.
+
+
+Exploit #3
+----------
+204	execlp("chmod", "chmod", chmodString, dst, (char *)0);
+
+The above code (line 204) executes the chmod command in similar fashion to exploit #2 by passing in a "dst" string, which
+is strcpy'd from argv[2]. In this way, we can pass in a argv[2] of any arbitrary command, including one to spawn a shell:
+argv[2]=";/bin/sh#"
