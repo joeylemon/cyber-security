@@ -27,6 +27,10 @@ For example, we can set USER=";/bin/sh#" to spawn a shell with root access.
 
 Exploit #3
 ----------
+110	i = copyFile(argv[2]);
+...
+142	strcpy(dst, arg);
+...
 204	execlp("chmod", "chmod", chmodString, dst, (char *)0);
 
 The above code (line 204) executes the chmod command in similar fashion to exploit #2 by passing in a "dst" string, which
