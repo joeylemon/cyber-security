@@ -1,0 +1,5 @@
+log size = 255
+
+buffer overflow at 101 (strcat(log, argv[2])
+
+main return address: 0x5555555558b8 
