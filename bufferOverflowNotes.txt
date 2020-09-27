@@ -3,3 +3,6 @@ log size = 255
 buffer overflow at 101 (strcat(log, argv[2])
 
 main return address: 0x17f3
+strcat call address: 0x527e
+
+>= 300 bytes so far overwrites return add. 
