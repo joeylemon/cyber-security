@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <string.h>
+
+char code[] = "\x48\x31\xff\x48\x31\xf6\x48\x31\xd2\x56\xbf\x66\x61\x6b\x65\x57\x54\x5f\x48\x31\xc0\xb0\x3b\x99\x6a\x2f\x0f\x05";
+
+int main()
+{
+    printf("len:%d bytes\n", strlen(code));
+    (*(void(*)()) code)();
+    return 0;
+}
