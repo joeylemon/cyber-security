@@ -1,3 +1,5 @@
+This file was completed prior to attempting any attacks against bcvs. We try to find potential vulnerabilities to provide us with leads later on.
+
 Group
 ---------
 Joey Lemon
